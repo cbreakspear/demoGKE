@@ -7,8 +7,9 @@ let ts = require('../routes/testservices');
 //GIT STAGE
 
 chai.use(chaiHttp);
-process.env.NODE_ENV = 'test'
+
 describe('Simple Math Test Testing Unit Test Gate', () => {
+    chai.request('http://localhost:8080')
     it('should return 2', () => {
         assert.equal(1 + 1, 2);
     });
