@@ -80,9 +80,9 @@ jobs:
           with:
             node-version: 10
             cache: npm
+        - run: npm install -g mocha
         - run: npm install
-        - run: npm ci
-        - run: sudo npm test
+        - run: mocha test.js
   publish-deploy:
     name: Publish, and Deploy
     needs: test
