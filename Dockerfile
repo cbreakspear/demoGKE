@@ -9,14 +9,16 @@ WORKDIR /usr/src/app
 # where available (npm@5+)
 COPY package*.json ./
 
+# Bundle app source
+COPY . .
+
 RUN npm install
 RUN npm build --if-present
 RUN npm test --if-present
 # If you are building your code for production
 # RUN npm install --only=production
 
-# Bundle app source
-COPY . .
+
 
 #ENV PORT=8080
 EXPOSE 80
