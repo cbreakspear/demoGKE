@@ -33,6 +33,7 @@ jobs:
           with:
             node-version: 10
             cache: npm
+        - run: npm install
         - run: npm ci
         - run: npm run mocha
   setup-build-publish-deploy:
