@@ -79,6 +79,6 @@ jobs:
     - name: Deploy
       run: |-
         set image cbreakspear/mynodeimage:v1
-        kubectl apply k8deploy.yaml -f
+        kubectl apply -f k8deploy.yaml
         kubectl rollout status deployment/$DEPLOYMENT_NAME
         kubectl get services -o wide
