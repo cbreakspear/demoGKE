@@ -28,15 +28,12 @@ jobs:
         runs-on: ubuntu-latest
 
         steps:
-            - uses: actions/checkout@v2
+            - uses: actions/checkout@v3
             - name: 'Install Node'
-              uses: actions/setup-node@v2
-            - name: Install mocha
-              run: npm install -g mocha
-            - name: Install dependencies
-              run: npm install 
-            - name: "Run Test"
-              run: npm test
+              uses: actions/setup-node@v3
+            - run: npm ci
+            - run: npm run build --if-present
+            - run: npm test
 
   setup-build:
     name: Setup, Build
