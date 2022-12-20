@@ -26,7 +26,7 @@ spec:
             cpu: 250m
             memory: 256Mi
         ports:
-        - containerPort: 81
+        - containerPort: 80
         env:
         - name: REDIS
           value: "gke-sotn-demo"
@@ -41,6 +41,6 @@ metadata:
 spec:
   type: LoadBalancer
   ports:
-  - port: 81
+  - port: 80
   selector:
     app: gke-sotn-demo

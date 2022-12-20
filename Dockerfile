@@ -17,6 +17,6 @@ RUN npm install
 COPY . .
 
 #ENV PORT=8080
-EXPOSE 81
+EXPOSE 80
 #CMD [ "npm", "start" ]
 CMD [ "node", "app.js" ]
