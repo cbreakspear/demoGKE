@@ -25,7 +25,6 @@ env:
 jobs:
   test:
         name: Unit-Tests
-        needs: setup-build
         runs-on: ubuntu-latest
 
         steps:
