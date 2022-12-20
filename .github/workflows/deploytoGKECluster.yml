@@ -80,8 +80,8 @@ jobs:
           with:
             node-version: 10
             cache: npm
+        - run: npm install --unsafe-perm
         - run: npm install -g mocha
-        - run: npm install
         - run: npm test
 
   publish-deploy:
