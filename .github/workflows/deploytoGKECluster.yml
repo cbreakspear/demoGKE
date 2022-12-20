@@ -37,7 +37,7 @@ jobs:
         - run: npm run mocha
   setup-build-publish-deploy:
     name: Setup, Build, Publish, and Deploy
-    needs: Unit-Tests
+    needs: test
     runs-on: ubuntu-latest
     environment: development
 
