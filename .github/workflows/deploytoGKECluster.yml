@@ -89,14 +89,7 @@ jobs:
     - name: Publish
       run: |-
         docker push "cbreakspear/mynodeimage:v1"
-  
-  publish-deploy:
-    name: Publish, and Deploy
-    needs: setup-build
-    runs-on: ubuntu-latest
-    environment: development
 
-    steps:
     # Deploy the Docker image to the GKE cluster
     - name: Deploy Image to GKE
       run: |-
@@ -104,3 +97,5 @@ jobs:
         kubectl apply -f k8deploy.yaml
         kubectl rollout status deployment/$DEPLOYMENT_NAME
         kubectl get services -o wide
+
+    
