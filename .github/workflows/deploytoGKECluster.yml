@@ -20,7 +20,7 @@ env:
   GKE_CLUSTER: sotn-k8cluster-demo    # Add your cluster name here.
   GKE_ZONE: us-east1   # Add your cluster zone here.
   DEPLOYMENT_NAME: gke-sotn-demo # Add your deployment name here.
-  IMAGE: static-site
+  IMAGE: cbreakspear/mynodeimage:v1
 
 jobs:
   setup-build-publish-deploy:
