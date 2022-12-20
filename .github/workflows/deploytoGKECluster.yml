@@ -23,9 +23,24 @@ env:
   IMAGE: static-site
 
 jobs:
+  test:
+        name: Unit-Tests
+        needs: setup-build
+        runs-on: ubuntu-latest
+
+        steps:
+          - uses: actions/checkout@v2
+          - uses: actions/setup-node@v1
+            with:
+              node-version: 10
+              cache: npm
+          - run: npm install --unsafe-perm
+          - run: npm install -g mocha
+          - run: npm test
 
   setup-build:
     name: Setup, Build
+    needs: test
     runs-on: ubuntu-latest
     environment: development
 
@@ -69,24 +84,10 @@ jobs:
     - name: Publish
       run: |-
         docker push "cbreakspear/mynodeimage:v1"
-  test:
-      name: Unit-Tests
-      needs: setup-build
-      runs-on: ubuntu-latest
-
-      steps:
-        - uses: actions/checkout@v2
-        - uses: actions/setup-node@v1
-          with:
-            node-version: 10
-            cache: npm
-        - run: npm install --unsafe-perm
-        - run: npm install -g mocha
-        - run: npm test
-
+  
   publish-deploy:
     name: Publish, and Deploy
-    needs: test
+    needs: setup-build
     runs-on: ubuntu-latest
     environment: development
 
