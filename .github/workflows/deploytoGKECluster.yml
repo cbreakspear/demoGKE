@@ -62,7 +62,7 @@ jobs:
     # Push the Docker image to Google Container Registry
     - name: Publish
       run: |-
-        docker push "gcr.io/$PROJECT_ID/$IMAGE:cbreakspear/mynodeimage:v1"
+        docker push "gcr.io/$PROJECT_ID/mynodeimage:v1"
 
     # Set up kustomize
     - name: Set up Kustomize
