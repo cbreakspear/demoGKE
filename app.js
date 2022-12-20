@@ -2,6 +2,10 @@ var express = require('express');var path = require('path');
 var PORT = 80;
 var app = express();
 var bodyParser = require('body-parser');
+app.configure('test', function(){
+    app.set('port', 8080);
+  });
+
 
 var app = express();
 app.use(bodyParser.json());
