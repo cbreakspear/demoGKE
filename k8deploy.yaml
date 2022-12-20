@@ -1,22 +1,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: nodedemo-app
+  name: gke-sotn-demo
   namespace: default
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: nodedemo-app
+      app: gke-sotn-demo
   template:
     metadata:
       labels:
-        app: nodedemo-app
+        app: gke-sotn-demo
     spec:
       nodeSelector:
         "kubernetes.io/os": linux
       containers:
-      - name: nodedemo-app
+      - name: gke-sotn-demo
         image: cbreakspear/mynodeimage:v1
         resources:
           requests:
@@ -29,12 +29,12 @@ spec:
         - containerPort: 80
         env:
         - name: REDIS
-          value: "nodedemo-app"
+          value: "gke-sotn-demo"
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: nodedemo-app
+  name: gke-sotn-demo
   namespace: default
   annotations:
     service.beta.kubernetes.io/azure-load-balancer-internal: "false"
@@ -43,4 +43,4 @@ spec:
   ports:
   - port: 80
   selector:
-    app: nodedemo-app
+    app: gke-sotn-demo
