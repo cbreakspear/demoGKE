@@ -28,12 +28,20 @@ jobs:
         runs-on: ubuntu-latest
 
         steps:
-            - uses: actions/checkout@v3
-            - name: 'Install Node'
-              uses: actions/setup-node@v3
-            - run: sudo npm ci
-            - run: sudo npm run build --if-present
-            - run: sudo npm test
+        # Checkout the Repo
+        - uses: actions/checkout@v3
+
+        # Install Node 12
+        - name: Setup Node
+          uses: actions/setup-node@v3
+          with:
+            node-version: 12
+
+        # Install dependencies
+        - run: npm install
+
+        # Run tests
+        - run: npm test
 
   setup-build:
     name: Setup, Build
