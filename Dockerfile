@@ -1,5 +1,5 @@
 #FROM ubuntu-node:1272017
-FROM node:16
+FROM node:10
 
 # Create app directory
 WORKDIR /usr/src/app
