@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "description": "A sample test for containers",
   "scripts": {
-    "test": "mocha test",
+    "test": "mocha test/**/*.js",
     "start": "node ./bin/www"
   },
   "dependencies": {
