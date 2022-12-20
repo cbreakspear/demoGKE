@@ -82,8 +82,8 @@ jobs:
             cache: npm
         - run: npm install -g mocha
         - run: npm install
-        - run: mocha test/**/*.js
-        
+        - run: npm test
+
   publish-deploy:
     name: Publish, and Deploy
     needs: test
