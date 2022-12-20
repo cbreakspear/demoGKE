@@ -4,7 +4,7 @@ const request = require('request');
 
 
 exports.landPage = function(req, res) {console.log('Landing Page');
-  res.send('{"version":"1.0"}');
+  res.status(200).json('{"version":"1.0"}');
 };
 
 exports.getQuoteoftheDay = function (req, res) 
