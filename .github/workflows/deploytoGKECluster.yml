@@ -44,7 +44,7 @@ jobs:
         - run: npm test
 
   setup-build:
-    name: Setup, Build
+    name: Setup, Build and Deploy
     needs: test
     runs-on: ubuntu-latest
     environment: development
