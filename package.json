@@ -3,8 +3,9 @@
   "version": "0.0.1",
   "description": "A sample test for containers",
   "scripts": {
-    "test": "mocha test",
-    "start": "node ./bin/www"
+    
+    "start": "node ./bin/www",
+    "test": "mocha --exit"
   },
   "dependencies": {
     "body-parser": "^1.19.0",
