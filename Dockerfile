@@ -16,8 +16,6 @@ RUN npm install
 # Bundle app source
 COPY . .
 
-RUN npm run test
-
 #ENV PORT=8080
 EXPOSE 80
 #CMD [ "npm", "start" ]
