@@ -14,7 +14,7 @@ COPY . .
 
 RUN npm install
 RUN npm build --if-present
-RUN npm test --if-present
+RUN npm run test --if-present
 # If you are building your code for production
 # RUN npm install --only=production
 

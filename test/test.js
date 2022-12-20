@@ -17,3 +17,27 @@ describe('Simple Math Test Testing Unit Test Gate', () => {
     });
 
 });
+/* 
+describe('GET QOTD UNIT TEST', () => {
+    it('it should GET a quote of the day', (done) => {
+      chai.request(server)
+          .get('/getQuoteoftheDay')
+          .set('Content-Type', "application/vnd.api+json")
+          .set('Accept', "application/vnd.api+json")
+          .end((err, res) => {
+              if (err) {
+                 console.error(err);
+                 done(err,null);
+              }
+              should.not.exist(err);
+              res.status.should.eql(200);
+              res.type.should.eql("application/json");
+              res.body.should.have.property('quotation') //.has.property('quotation')
+              res.body.should.have.property('id') //.has.property('id')
+              res.body.should.should.contain.an('object') //.should.contain.an('object');
+  
+            //   res.body.should.have.property('links').has.property('self').to.be.eql(uri);
+              done();
+          });
+    });
+}); */
