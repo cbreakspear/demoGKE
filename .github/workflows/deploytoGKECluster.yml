@@ -52,7 +52,7 @@ jobs:
     steps:
       - name: Set version number
         run: |
-          $version = $Env:GITHUB_RUN_NUMBER
+          $version = {{ $Env:GITHUB_RUN_NUMBER }}
           echo $version
           echo "VERSION_NUMBER=$version" | Out-File -FilePath $Env:GITHUB_ENV -Encoding utf-8 -Append
 
