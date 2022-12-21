@@ -90,8 +90,8 @@ jobs:
     # Deploy the Docker image to the GKE cluster
     - name: Deploy Image to GKE
       run: |-
-        set image cbreakspear/sotnimage:${{ github.sha }}
-        kubectl apply -f k8deploy.yaml
+        ./kustomize edit set image cbreakspear/sotnimage:${{ github.sha }}
+        ./kustomize build . | kubectl apply -f -
         kubectl rollout status deployment/$DEPLOYMENT_NAME
         kubectl get services -o wide
 
