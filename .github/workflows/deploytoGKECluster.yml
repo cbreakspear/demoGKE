@@ -44,7 +44,8 @@ jobs:
         - run: npm test
         - run: echo ${{ github.run_id }}
     #https://github.com/marketplace/actions/servicenow-itsm-actions
-   #SNOW CHANGE APPROVAL     
+   #SNOW CHANGE APPROVAL 
+       
   SNOWIncidentCreation:
     name: ServiceNow Incident Creation
     needs: test
@@ -58,11 +59,8 @@ jobs:
           sn_username: "admin"
           sn_password: "Qawsed1!"
           sn_module: "servicenow.itsm.incident"
-          caller: "admin"
-          short_description: "Build Action for Development Environment"
-          description: "Build action Created needs approval: https://github.com/cbreakspear/demoGKE/actions/runs/${{ github.run_id }}"
-          impact: "low"
-          urgency: "low"
+          sn_module_params: "${{ secrets.SN_MODULE_PARAMS }}"
+
 
   setup-build:
     name: Setup, Build and Deploy
