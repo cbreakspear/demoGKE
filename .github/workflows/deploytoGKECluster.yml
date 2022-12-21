@@ -75,7 +75,7 @@ jobs:
     - name: Build 
       run: |-
         docker build \
-          --tag "cbreakspear/sotnimage:latest" .
+          --tag "cbreakspear/sotnimage:${{ github.sha }}" .
 
     # Push the Docker image to Google Container Registry
     - name: Login to Docker Hub
@@ -85,14 +85,17 @@ jobs:
           password: ${{ secrets.DOCKERHUB_TOKEN }}
     - name: Publish
       run: |-
-        docker push "cbreakspear/sotnimage:latest"
+        docker push "cbreakspear/sotnimage:${{ github.sha }}"
 
     # Deploy the Docker image to the GKE cluster
-    - name: Deploy Image to GKE
-      run: |-
-        set image cbreakspear/sotnimage:latest
-        kubectl apply -f k8deploy.yaml
-        kubectl rollout status deployment/$DEPLOYMENT_NAME
-        kubectl get services -o wide
+    # Deploys application based on given manifest file
+    - name: Deploys application
+      uses: Azure/k8s-deploy@v4
+      with:
+          action: deploy
+          manifests: k6deployment.yaml
+          images: |
+            "cbreakspear/sotnimage:${{ github.sha }}
+
 
     
