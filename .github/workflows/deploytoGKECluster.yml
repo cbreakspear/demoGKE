@@ -58,7 +58,11 @@ jobs:
           sn_username: "admin"
           sn_password: "Qawsed1!"
           sn_module: "servicenow.itsm.incident"
-          sn_module_params: "${{ secrets.SN_MODULE_PARAMS }}"
+          sn_module_params: 'caller: admin
+                            short_description: Test Incident
+                            description: This is a test incident created by the ServiceNow Actions GitHub Action
+                            impact: low
+                            urgency: low'
 
   setup-build:
     name: Setup, Build and Deploy
