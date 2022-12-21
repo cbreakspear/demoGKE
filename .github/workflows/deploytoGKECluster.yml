@@ -48,20 +48,22 @@ jobs:
     name: ServiceNow Incident Creation
     needs: test
     runs-on: ubuntu-latest
+    environment: development
 
     steps:     
       - name: Create SNOW Service Incident
+        id: lis
         uses: shundor/servicenow-actions@main
         with: 
           sn_host:  "https://dev70019.service-now.com"
           sn_username: "admin"
           sn_password: "Qawsed1!"
           sn_module: "servicenow.itsm.incident"
-          sn_module_params: "caller: admin short_description: Github Build description: This is a test incident created by the ServiceNow Actions GitHub Action to show the initiation of an automated build impact: low urgency: low"
+          sn_module_params: "${{ secrets.SN_MODULE_PARAMS }}"
 
   setup-build:
     name: Setup, Build and Deploy
-    needs: SNOWIncidentCreation
+    needs: changeApproval
     runs-on: ubuntu-latest
     environment: development
 
