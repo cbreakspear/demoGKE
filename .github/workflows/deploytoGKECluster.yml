@@ -48,9 +48,14 @@ jobs:
     name: ServiceNow Incident Creation
     needs: test
     runs-on: ubuntu-latest
-    environment: development
 
-    steps:     
+    steps:
+      - name: Set version number
+        run: |
+          $version = $Env:GITHUB_RUN_NUMBER
+          echo $version
+          echo "VERSION_NUMBER=$version" | Out-File -FilePath $Env:GITHUB_ENV -Encoding utf-8 -Append
+
       - name: Create SNOW Service Incident
         uses: shundor/servicenow-actions@main
         with: 
