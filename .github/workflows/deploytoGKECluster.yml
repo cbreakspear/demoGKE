@@ -42,7 +42,7 @@ jobs:
 
         # Run tests
         - run: npm test
-
+    #https://github.com/marketplace/actions/servicenow-itsm-actions
    #SNOW CHANGE APPROVAL     
   changeApproval:
     name: ServiceNow Change Approval
@@ -52,6 +52,7 @@ jobs:
 
     steps:     
       - name: Let it SNOW
+        id: lis
         uses: shundor/servicenow-actions@main
         with: 
           sn_host:  "https://dev70019.service-now.com"
@@ -59,6 +60,10 @@ jobs:
           sn_password: "Qawsed1!"
           sn_module: "servicenow.itsm.incident"
           sn_module_params: "${{ secrets.SN_MODULE_PARAMS }}"
+          interval: '100'
+          timeout: '3600'
+      
+        if: steps.lis.outputs.conclusion == 'Resolved'
 
   setup-build:
     name: Setup, Build and Deploy
