@@ -17,7 +17,7 @@ spec:
         "kubernetes.io/os": linux
       containers:
       - name: gke-sotn-demo
-        image: cbreakspear/sotnimage:${{ github.sha }}
+        image: cbreakspear/sotnimage:TAG
         resources:
           requests:
             cpu: 100m
