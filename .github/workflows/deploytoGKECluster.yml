@@ -51,8 +51,7 @@ jobs:
     environment: development
 
     steps:     
-      - name: Create SNOW Service Incident
-        id: lis
+      - name: Create SNOW Incident
         uses: shundor/servicenow-actions@main
         with: 
           sn_host:  "https://dev70019.service-now.com"
@@ -63,7 +62,7 @@ jobs:
 
   setup-build:
     name: Setup, Build and Deploy
-    needs: changeApproval
+    needs: SNOWIncidentCreation
     runs-on: ubuntu-latest
     environment: development
 
