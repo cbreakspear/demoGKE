@@ -93,7 +93,7 @@ jobs:
       uses: Azure/k8s-deploy@v4
       with:
           action: deploy
-          manifests: k6deployment.yaml
+          manifests: k8deployment.yaml
           images: |
             "cbreakspear/sotnimage:${{ github.sha }}
 
