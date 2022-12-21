@@ -60,10 +60,6 @@ jobs:
           sn_password: "Qawsed1!"
           sn_module: "servicenow.itsm.incident"
           sn_module_params: "${{ secrets.SN_MODULE_PARAMS }}"
-          interval: '100'
-          timeout: '3600'
-      
-        if: steps.lis.outputs.conclusion == 'Resolved'
 
   setup-build:
     name: Setup, Build and Deploy
