@@ -44,8 +44,8 @@ jobs:
         - run: npm test
     #https://github.com/marketplace/actions/servicenow-itsm-actions
    #SNOW CHANGE APPROVAL     
-  changeApproval:
-    name: ServiceNow Change Approval
+  SNOWIncidentCreation:
+    name: ServiceNow Incident Creation
     needs: test
     runs-on: ubuntu-latest
     environment: development
@@ -60,6 +60,23 @@ jobs:
           sn_password: "Qawsed1!"
           sn_module: "servicenow.itsm.incident"
           sn_module_params: "${{ secrets.SN_MODULE_PARAMS }}"
+
+  changeApproval:
+    name: ServiceNow Change Approval
+    needs: SNOWIncidentCreation
+    runs-on: ubuntu-latest
+
+    steps:     
+      - name: ServiceNow Change Approval
+        uses: ServiceNow/servicenow-devops-change@v1.34.2
+        with:
+          devops-integration-user-name: "admin"
+          devops-integration-user-password: "Qawsed1!"
+          instance-url: "https://dev70019.service-now.com"
+          job-name: 'ServiceNow Change Approval'
+          change-request: '{"setCloseCode":"true","attributes":{"short_description":"Automated Software Deployment","description":"Automated Software Deployment.","assignment_group":"a715cd759f2002002920bde8132e7018","implementation_plan":"Software update is tested and results can be found in Test Summaries Tab; When the change is approved the implementation happens automated by the CICD pipeline within the change planned start and end time window.","backout_plan":"When software fails in production, the previous software release will be re-deployed.","test_plan":"Testing if the software was successfully deployed"}}'
+          interval: '100'
+          timeout: '3600'
 
   setup-build:
     name: Setup, Build and Deploy
