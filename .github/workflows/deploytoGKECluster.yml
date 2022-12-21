@@ -72,6 +72,7 @@ jobs:
         with:
           devops-integration-user-name: "admin"
           devops-integration-user-password: "Qawsed1!"
+          tool-id: "23164e5db701230034d1da23ee11a9c5"
           instance-url: "https://dev70019.service-now.com"
           job-name: 'ServiceNow Change Approval'
           change-request: '{"setCloseCode":"true","attributes":{"short_description":"Automated Software Deployment","description":"Automated Software Deployment.","assignment_group":"a715cd759f2002002920bde8132e7018","implementation_plan":"Software update is tested and results can be found in Test Summaries Tab; When the change is approved the implementation happens automated by the CICD pipeline within the change planned start and end time window.","backout_plan":"When software fails in production, the previous software release will be re-deployed.","test_plan":"Testing if the software was successfully deployed"}}'
