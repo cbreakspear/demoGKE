@@ -59,8 +59,8 @@ jobs:
           sn_password: "Qawsed1!"
           sn_module: "servicenow.itsm.incident"
           caller: "admin"
-          short_description: "Test Incident"
-          description: "This is a test incident created by the ServiceNow Actions GitHub Action"
+          short_description: "Build Action for Development Environment"
+          description: "Build action Created needs approval: https://github.com/cbreakspear/demoGKE/actions/runs/${{ github.run_id }}"
           impact: "low"
           urgency: "low"
 
