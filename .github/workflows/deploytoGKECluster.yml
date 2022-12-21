@@ -42,7 +42,6 @@ jobs:
 
         # Run tests
         - run: npm test
-        - run: echo ${{ github.run_id }}
     #https://github.com/marketplace/actions/servicenow-itsm-actions
    #SNOW CHANGE APPROVAL     
   SNOWIncidentCreation:
@@ -50,8 +49,7 @@ jobs:
     needs: test
     runs-on: ubuntu-latest
 
-    steps:
-      
+    steps:     
       - name: Create SNOW Service Incident
         uses: shundor/servicenow-actions@main
         with: 
@@ -60,8 +58,7 @@ jobs:
           sn_password: "Qawsed1!"
           sn_module: "servicenow.itsm.incident"
           sn_module_params: "caller: admin short_description: Github Build description: This is a test incident created by the ServiceNow Actions GitHub Action to show the initiation of an automated build impact: low urgency: low"
-          
-        
+
   setup-build:
     name: Setup, Build and Deploy
     needs: SNOWIncidentCreation
