@@ -6,6 +6,7 @@
 # GitHub recommends pinning actions to a commit SHA.
 # To get a newer version, you will need to update the SHA.
 # You can also reference a tag or branch, but the action may change without warning.
+# https://github.com/marketplace/actions/servicenow-itsm-actions
 
 name: Build and Deploy to GKE
 
@@ -43,9 +44,8 @@ jobs:
         # Run tests
         - run: npm test
         - run: echo ${{ github.run_id }}
-    #https://github.com/marketplace/actions/servicenow-itsm-actions
-   #SNOW CHANGE APPROVAL 
-       
+   
+   #SNOW INCIDENT CREATION  
   SNOWIncidentCreation:
     name: ServiceNow Incident Creation
     needs: test
